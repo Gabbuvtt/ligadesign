@@ -105,24 +105,22 @@ export default function Home() {
       </aside>
 
       {/* CONTENIDO PRINCIPAL */}
-      <main className="flex-1 md:ml-64 flex flex-col overflow-x-hidden">
+      <main className="flex-1 md:ml-64 flex flex-col overflow-x-hidden relative">
         
-        {/* 🖼️ FONDO FIJO A PRUEBA DE IPHONE (Efecto parallax real) */}
-        <div className="fixed top-0 left-0 w-full h-screen -z-10 pointer-events-none">
-          <img 
-            src="/bg-desing.jpg" 
-            alt="Fondo LIGA Design" 
-            className="w-full h-full object-cover"
-          />
-          {/* Capa blanca difuminada */}
+        {/* 🖼️ FONDO FIJO INDEPENDIENTE (Siempre medirá exactamente la pantalla, cero zoom) */}
+        <div 
+          className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/bg-desing.jpg')" }}
+        >
+          {/* Capa blanca difuminada para que el texto se lea bien */}
           <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]"></div>
         </div>
 
-        {/* CONTENEDOR DE SECCIONES (Transparente para que se vea el fondo) */}
-        <div className="relative w-full"> 
+        {/* CONTENEDOR DE SECCIONES (¡Totalmente transparente, sin fondos!) */}
+        <div className="relative w-full z-10">
           
           {/* 1. SECCIÓN INICIO */}
-          <section id="inicio" className="relative z-10 min-h-screen w-full flex flex-col items-center justify-center pt-24 md:pt-0 px-6 md:px-8 text-center">
+          <section id="inicio" className="relative min-h-screen w-full flex flex-col items-center justify-center pt-24 md:pt-0 px-6 md:px-8 text-center">
             {/* Texto ajustado para que no se desborde en celular */}
             <h1 className="text-4xl md:text-7xl font-serif text-slate-900 mb-6 uppercase tracking-wider leading-tight">
               Diseño a medida con <br className="hidden md:block" /> acabados de primera
