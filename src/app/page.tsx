@@ -123,55 +123,67 @@ export default function Home() {
           <section id="inicio" className="relative min-h-screen w-full flex flex-col items-center justify-center pt-24 md:pt-0 px-6 md:px-8 text-center">
             {/* Texto ajustado para que no se desborde en celular */}
             <h1 className="text-4xl md:text-7xl font-serif text-slate-900 mb-6 uppercase tracking-wider leading-tight">
-              Diseño a medida con <br className="hidden md:block" /> acabados de primera
+              MANUFACTURA Y ENSAMBLAJE DE <br className="hidden md:block" /> PRECISIÓN
             </h1>
             <p className="text-base md:text-xl mb-10 text-slate-700 px-4">
-              Transformando espacios con mobiliario exclusivo. <br /> Caracas, Venezuela.
+              El aliado estratégico para arquitectos y desarrolladores. Ejecutamos tus planos con acabados industriales en mobiliario residencial y comercial. Caracas, Venezuela. 
             </p>
             <a href="#contacto" className="px-8 py-3 bg-white border border-slate-300 shadow-sm rounded-full font-medium text-sm md:text-base text-slate-900 hover:bg-slate-50 transition duration-300">
-              AGENDAR UNA CONSULTA
+              COTIZAR PROYECTO
             </a>
           </section>
 
           {/* 2. SECCIÓN SERVICIOS */}
-          <section id="servicios" className="relative z-10 min-h-screen w-full py-24 px-6 md:px-20 flex flex-col items-center justify-center">
-            <h2 className="text-3xl md:text-4xl font-serif mb-12 md:mb-16 uppercase tracking-widest text-slate-900">Servicios</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full max-w-5xl">
+          <section id="servicios" className="w-full py-24 bg-white px-6 md:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl md:text-5xl font-serif text-slate-900 mb-16 text-center">
+                NUESTROS <span className="italic text-slate-700">SERVICIOS</span>
+              </h2>
               
-              <div className="bg-white/80 backdrop-blur-md p-8 md:p-10 shadow-sm border border-white/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-sm group cursor-default">
-                <div className="text-slate-400 mb-6 group-hover:text-slate-800 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 2v20"/><path d="M20 2v20"/><path d="M4 14h16"/><path d="M4 10h16"/><path d="M9 14v8"/><path d="M15 14v8"/></svg>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                
+                {/* Pilar 1: Cutting */}
+                <div className="flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 mb-6 border border-slate-900 flex items-center justify-center rounded-full group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold tracking-widest uppercase text-slate-900 mb-4">Servicio de Cutting</h3>
+                  <p className="text-slate-600 font-light leading-relaxed">
+                    Despiece computarizado y optimización de tableros. Entregamos módulos cortados y canteados con precisión milimétrica, listos para ensamblar en tus obras de interiorismo.
+                  </p>
                 </div>
-                <h3 className="text-lg md:text-xl font-serif mb-3 text-slate-900">Diseño de Cocinas</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Espacios funcionales y estéticos. Utilizamos materiales de alta resistencia y herrajes de última generación.</p>
-              </div>
 
-              <div className="bg-white/80 backdrop-blur-md p-8 md:p-10 shadow-sm border border-white/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-sm group cursor-default">
-                <div className="text-slate-400 mb-6 group-hover:text-slate-800 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16v16H4z"/><path d="M12 4v16"/><path d="M8 12h.01"/><path d="M16 12h.01"/></svg>
+                {/* Pilar 2: Kitchen & Cabinet */}
+                <div className="flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 mb-6 border border-slate-900 flex items-center justify-center rounded-full group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold tracking-widest uppercase text-slate-900 mb-4">Kitchen & Cabinet</h3>
+                  <p className="text-slate-600 font-light leading-relaxed">
+                    Manufactura integral de cocinas, mobiliario comercial y gabinetes. Transformamos tus renders en realidad utilizando herrajes premium y estándares de ensamblaje de alto nivel.
+                  </p>
                 </div>
-                <h3 className="text-lg md:text-xl font-serif mb-3 text-slate-900">Closets y Vestidores</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Optimización de espacios con acabados de lujo. Compartimientos a medida para una organización impecable.</p>
-              </div>
 
-              <div className="bg-white/80 backdrop-blur-md p-8 md:p-10 shadow-sm border border-white/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-sm group cursor-default">
-                <div className="text-slate-400 mb-6 group-hover:text-slate-800 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 10h20"/><path d="M5 10v10"/><path d="M19 10v10"/><path d="M3 6h18"/><path d="M8 6v4"/><path d="M16 6v4"/></svg>
+                {/* Pilar 3: Ejecución */}
+                <div className="flex flex-col items-center text-center group">
+                  <div className="w-16 h-16 mb-6 border border-slate-900 flex items-center justify-center rounded-full group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold tracking-widest uppercase text-slate-900 mb-4">Ejecución en Obra</h3>
+                  <p className="text-slate-600 font-light leading-relaxed">
+                    Instalación profesional alineada al cronograma de tu desarrollo. Un equipo técnico especializado que garantiza que cada pieza encaje perfectamente en el espacio final.
+                  </p>
                 </div>
-                <h3 className="text-lg md:text-xl font-serif mb-3 text-slate-900">Mobiliario Comercial</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Fabricación de mobiliario para oficinas y locales comerciales que reflejen la identidad visual de tu marca.</p>
-              </div>
 
-              <div className="bg-white/80 backdrop-blur-md p-8 md:p-10 shadow-sm border border-white/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 rounded-sm group cursor-default">
-                <div className="text-slate-400 mb-6 group-hover:text-slate-800 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                </div>
-                <h3 className="text-lg md:text-xl font-serif mb-3 text-slate-900">Modelado 3D</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">Visualización arquitectónica. Observa cómo quedará tu proyecto con renders fotorrealistas antes de iniciar.</p>
               </div>
-
             </div>
-          </section>
+          </section>  
         </div>
 
         {/* 3. PORTFOLIO */}
@@ -207,7 +219,7 @@ export default function Home() {
                     Artesanía moderna <br/> para espacios únicos
                  </h2>
                  <p className="text-sm md:text-base text-slate-600 mb-6 leading-relaxed">
-                    En LIGA Design fusionamos la precisión de la ebanistería tradicional con las últimas tendencias en diseño interior. Dirigidos por un equipo apasionado en Caracas, nos especializamos en transformar ideas en mobiliario tangible de la más alta calidad.
+                    En LIGA Design fusionamos la tecnología de despiece (cutting) con el ensamblaje de alto nivel para cocinas y gabinetes. Dirigidos por un equipo técnico en Caracas, nos especializamos en transformar los planos y renders de arquitectos en mobiliario tangible con exactitud milimétrica.
                  </p>
                  <p className="text-sm md:text-base text-slate-600 mb-8 md:mb-10 leading-relaxed">
                     Cada cocina, clóset y pieza comercial que sale de nuestro taller está pensada al milímetro. Seleccionamos cuidadosamente nuestras materias primas y utilizamos herrajes premium para garantizar que tu inversión perdure en el tiempo.

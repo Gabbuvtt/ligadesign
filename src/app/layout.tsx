@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "LIGA Design",
-  description: "Mobiliaria a la Medida",
+  description: "Manufactura y ensamblaje de precisión para proyectos arquitectónicos. El aliado estratégico para arquitectos en Caracas, Venezuela.",
   icons: {
     icon: "/Logo_LIGA_Desing2.png"
   }
