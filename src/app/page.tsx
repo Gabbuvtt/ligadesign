@@ -44,7 +44,7 @@ export default function Home() {
                   alt="LIGA Design Logo" 
                   width={200} 
                   height={100} 
-                  className="w-auto h-16 object-contain" 
+                  className="w-36 h-auto object-contain scale-125 origin-left" 
                   priority
                 />
                 <button 
@@ -88,7 +88,7 @@ export default function Home() {
          <nav className="flex flex-col gap-6 text-sm tracking-wide">
             <a href="#inicio" className="hover:font-bold transition-all">Inicio</a>
             <a href="#servicios" className="hover:font-bold transition-all">Servicios</a>
-            <a href="#portfolio" className="hover:font-bold transition-all">Portfolio</a>
+            <a href="#portfolio" className="hover:font-bold transition-all">Portafolio</a>
             <a href="#sobre-nosotros" className="hover:font-bold transition-all">Sobre Nosotros</a>
             <a href="#contacto" className="hover:font-bold transition-all">Contacto</a>
          </nav>
@@ -110,7 +110,7 @@ export default function Home() {
               Diseño a medida con <br className="hidden md:block" /> acabados de primera
             </h1>
             <p className="text-base md:text-xl mb-10 text-slate-700 px-4">
-              Transformando espacios con cocinas y mobiliario exclusivo. <br /> Caracas, Venezuela.
+              Transformando espacios con mobiliario exclusivo. <br /> Caracas, Venezuela.
             </p>
             <a href="#contacto" className="px-8 py-3 bg-white border border-slate-300 shadow-sm rounded-full font-medium text-sm md:text-base text-slate-900 hover:bg-slate-50 transition duration-300">
               AGENDAR UNA CONSULTA
@@ -161,7 +161,7 @@ export default function Home() {
         {/* 3. PORTFOLIO */}
         <section id="portfolio" className="min-h-screen w-full bg-white py-24 px-6 md:px-20 flex flex-col items-center">
            <div className="flex flex-col items-center mb-12 md:mb-16 text-center">
-             <h2 className="text-3xl md:text-4xl font-serif uppercase tracking-widest text-slate-900 mb-4">Portfolio</h2>
+             <h2 className="text-3xl md:text-4xl font-serif uppercase tracking-widest text-slate-900 mb-4">Portafolio</h2>
              <p className="text-slate-500 max-w-xl text-sm md:text-base">Una selección de nuestros proyectos más recientes. Diseño a medida y manufactura de precisión.</p>
            </div>
            
