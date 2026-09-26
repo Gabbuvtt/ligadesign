@@ -6,51 +6,61 @@ import Image from 'next/image';
 export default function Home() {
   // Estado para controlar si el menú de celular está abierto o cerrado
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   const portfolioItems = [
-    { id: 1, src: "/proyectos/portfolio1.jpeg", alt: "Cocina y espacios modernos" },
+    { id: 1, src: "/proyectos/portfolio4.jpeg", alt: "Cocina y espacios modernos" },
     { id: 2, src: "/proyectos/portfolio2.jpeg", alt: "Closet a medida" },
-    { id: 3, src: "/proyectos/portfolio3.jpeg", alt: "Detalle de acabados" },
-    { id: 4, src: "/proyectos/portfolio4.jpeg", alt: "Isla central" },
-    { id: 5, src: "/proyectos/portfolio5.jpeg", alt: "Mobiliario habitación" },
-    { id: 6, src: "/proyectos/portfolio6.jpeg", alt: "Diseño interior" },
+    { id: 3, src: "/proyectos/portfolio6.jpeg", alt: "Detalle de acabados" },
+    { id: 4, src: "/proyectos/portfolio5.jpeg", alt: "Isla central" },
+    { id: 5, src: "/proyectos/portfolio7.jpeg", alt: "Mobiliario habitación" },
+    { id: 6, src: "/proyectos/portfolio1.jpeg", alt: "Diseño interior" },
+    { id: 7, src: "/proyectos/portfolio3.jpeg", alt: "Diseño interior" },
   ];
 
-  const renderCard = (item: any) => (
-    <div key={item.id} className="w-full rounded-sm overflow-hidden group relative cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300 transform-gpu">
-      <img 
-        src={item.src} 
-        alt={item.alt} 
-        className="block w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu will-change-transform"
-        loading="lazy"
-      />
-      <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
-        <div className="border border-white/60 w-full h-full flex items-center justify-center transform scale-95 group-hover:scale-100 transition-transform duration-500 transform-gpu">
-          <span className="text-white text-sm md:text-base font-serif tracking-widest uppercase text-center px-4">
-            {item.alt}
-          </span>
+  const renderCard = (item: any) => {
+      const isActive = activeCard === item.id;
+      
+      return (
+        <div 
+          key={item.id} 
+          className="w-full rounded-sm overflow-hidden group relative cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300 transform-gpu"
+          onClick={() => setActiveCard(isActive ? null : item.id)}
+        >
+          <img 
+            src={item.src} 
+            alt={item.alt} 
+            className={`block w-full h-auto object-cover transition-transform duration-700 transform-gpu will-change-transform ${isActive ? 'scale-105' : 'group-hover:scale-105'}`}
+            loading="lazy"
+          />
+          <div className={`absolute inset-0 bg-slate-900/50 transition-opacity duration-300 flex items-center justify-center p-6 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+            <div className={`border border-white/60 w-full h-full flex items-center justify-center transition-transform duration-500 transform-gpu ${isActive ? 'scale-100' : 'scale-95 group-hover:scale-100'}`}>
+              <span className="text-white text-sm md:text-base font-serif tracking-widest uppercase text-center px-4 shadow-sm">
+                {item.alt}
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  );
+      );
+    };
 
   return (
     <div className="relative min-h-screen w-full font-sans text-slate-800">
       
-      {/* 📱 HEADER PARA MÓVILES (Oculto en escritorio) */}
-      <header className="md:hidden fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-50 px-6 py-4 flex justify-between items-center shadow-sm">
-        <Image 
-                  src="/LIGA-LOGO1.png" 
-                  alt="LIGA Design Logo" 
-                  width={200} 
-                  height={100} 
-                  className="w-36 h-auto object-contain scale-125 origin-left" 
-                  priority
-                />
-                <button 
-                  onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                  className="text-slate-900 focus:outline-none p-2"
-              >
+{     /* 📱 HEADER PARA MÓVILES (Adelgazado con py-2) */}
+      <header className="md:hidden fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-50 px-6 py-2 flex justify-between items-center shadow-sm">
+         <Image 
+           src="/LIGA-LOGO1.png" 
+           alt="LIGA Design Logo" 
+           width={300} 
+           height={150} 
+           className="w-32 h-auto object-contain scale-125 origin-left" 
+           priority
+         />
+         <button 
+           onClick={() => setIsMenuOpen(!isMenuOpen)} 
+           className="text-slate-900 focus:outline-none p-2"
+         >
             {/* Ícono de hamburguesa interactivo */}
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                {isMenuOpen ? (
@@ -62,14 +72,14 @@ export default function Home() {
          </button>
       </header>
 
-      {/* 📱 MENÚ DESPLEGABLE PARA MÓVILES */}
+      {/* 📱 MENÚ DESPLEGABLE PARA MÓVILES (Ajustado al nuevo grosor) */}
       {isMenuOpen && (
-        <div className="md:hidden fixed top-[64px] left-0 w-full bg-white z-40 shadow-xl border-t border-slate-100 flex flex-col px-6 py-6 gap-6 text-base tracking-wide">
-          <a href="#inicio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-2">Inicio</a>
-          <a href="#servicios" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-2">Servicios</a>
-          <a href="#portfolio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-2">Portfolio</a>
-          <a href="#sobre-nosotros" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-2">Sobre Nosotros</a>
-          <a href="#contacto" onClick={() => setIsMenuOpen(false)} className="pb-2">Contacto</a>
+        <div className="md:hidden fixed top-[64px] left-0 w-full bg-white z-40 shadow-xl border-t border-slate-100 flex flex-col px-8 py-6 gap-6 text-lg font-medium tracking-wide">
+          <a href="#inicio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Inicio</a>
+          <a href="#servicios" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Servicios</a>
+          <a href="#portfolio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Portafolio</a>
+          <a href="#sobre-nosotros" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Sobre Nosotros</a>
+          <a href="#contacto" onClick={() => setIsMenuOpen(false)} className="pb-3 hover:text-slate-500 transition-colors">Contacto</a>
         </div>
       )}
 
