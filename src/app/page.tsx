@@ -39,18 +39,18 @@ export default function Home() {
       
       {/* 📱 HEADER PARA MÓVILES (Oculto en escritorio) */}
       <header className="md:hidden fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-50 px-6 py-4 flex justify-between items-center shadow-sm">
-         <Image 
-           src="/liga-logo.png" 
-           alt="LIGA Design Logo" 
-           width={110} 
-           height={55} 
-           className="w-auto h-8 object-contain"
-           priority
-         />
-         <button 
-           onClick={() => setIsMenuOpen(!isMenuOpen)} 
-           className="text-slate-900 focus:outline-none p-2"
-         >
+        <Image 
+                  src="/LIGA-LOGO1.png" 
+                  alt="LIGA Design Logo" 
+                  width={200} 
+                  height={100} 
+                  className="w-auto h-16 object-contain" 
+                  priority
+                />
+                <button 
+                  onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                  className="text-slate-900 focus:outline-none p-2"
+              >
             {/* Ícono de hamburguesa interactivo */}
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                {isMenuOpen ? (
@@ -74,10 +74,10 @@ export default function Home() {
       )}
 
       {/* 💻 MENÚ LATERAL FIJO (Oculto en móviles, visible en escritorio) */}
-      <aside className="hidden md:flex fixed top-0 left-0 h-screen w-64 bg-transparent z-50 flex-col justify-center px-12 text-slate-900">
-         <div className="absolute top-8 left-0 w-full flex justify-center">
+      <aside className="hidden md:flex fixed top-0 left-0 h-screen w-64 bg-white border-r border-slate-100 z-50 flex-col justify-center px-12 text-slate-900 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
+         <div className="absolute top-0 left-0 w-full flex justify-center">
             <Image 
-              src="/liga-logo.png" 
+              src="/LIGA-LOGO1.png" 
               alt="LIGA Design Logo" 
               width={140} 
               height={70} 
@@ -95,7 +95,7 @@ export default function Home() {
       </aside>
 
       {/* CONTENIDO PRINCIPAL (md:ml-64 asegura que el margen solo aplique en escritorio) */}
-      <main className="w-full md:ml-64 flex-1">
+      <main className="flex-1 md:ml-64 flex flex-col overflow-x-hidden bg-white">
         
         <div 
           className="relative w-full bg-fixed bg-cover bg-center"
@@ -241,14 +241,14 @@ export default function Home() {
                        <svg xmlns="http://www.w3.org/2000/svg" className="text-slate-500 mt-1 shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                        <div>
                           <h6 className="font-medium text-white tracking-wide text-sm md:text-base">Teléfono</h6>
-                          <p className="text-slate-400 text-xs md:text-sm mt-1">+58 412-0000000</p>
+                          <p className="text-slate-400 text-xs md:text-sm mt-1">+58 424-1676126</p>
                        </div>
                     </div>
                     <div className="flex items-start gap-4">
                        <svg xmlns="http://www.w3.org/2000/svg" className="text-slate-500 mt-1 shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                        <div>
                           <h6 className="font-medium text-white tracking-wide text-sm md:text-base">Correo</h6>
-                          <p className="text-slate-400 text-xs md:text-sm mt-1">proyectos@ligadesign.online</p>
+                          <p className="text-slate-400 text-xs md:text-sm mt-1">liga.desing0708@gmail.com</p>
                        </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -305,8 +305,8 @@ export default function Home() {
            </div>
            
            <div className="w-full max-w-6xl mx-auto mt-16 md:mt-24 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-slate-500">
-              <p className="text-center md:text-left">© {new Date().getFullYear()} LIGA Design. Todos los derechos reservados.</p>
-              <a href="https://instagram.com/liga.design" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+              <p className="text-center md:text-left">© {new Date().getFullYear()} LIGA Design VE. Todos los derechos reservados.</p>
+              <a href="https://www.instagram.com/liga.design.ve/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
                  <span>Síguenos en Instagram</span>
                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
