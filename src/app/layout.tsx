@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "LIGA Design",
   description: "Mobiliaria a la Medida",
+  icons: {
+    icon: "/Logo-Liga-Design.png"
+  }
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
