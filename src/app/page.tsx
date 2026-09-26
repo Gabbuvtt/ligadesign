@@ -110,7 +110,7 @@ export default function Home() {
         {/* 🖼️ FONDO FIJO INDEPENDIENTE (Siempre medirá exactamente la pantalla, cero zoom) */}
         <div 
           className="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/bg-desing2.jpg')" }}
+          style={{ backgroundImage: "url('/bg-desing2.jpeg')" }}
         >
           {/* Capa blanca difuminada para que el texto se lea bien */}
           <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]"></div>
