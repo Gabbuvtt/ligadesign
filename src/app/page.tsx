@@ -50,7 +50,7 @@ export default function Home() {
 {     /* 📱 HEADER PARA MÓVILES (Adelgazado con py-2) */}
       <header className="md:hidden fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md z-50 px-6 py-2 flex justify-between items-center shadow-sm">
          <Image 
-           src="/LIGA-LOGO1.png" 
+           src="/Logo_LIGA_Design-2-removebg-preview.png" 
            alt="LIGA Design Logo" 
            width={300} 
            height={150} 
@@ -87,7 +87,7 @@ export default function Home() {
       <aside className="hidden md:flex fixed top-0 left-0 h-screen w-64 bg-white border-r border-slate-100 z-50 flex-col justify-center px-12 text-slate-900 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
          <div className="absolute top-0 left-0 w-full flex justify-center">
             <Image 
-              src="/LIGA-LOGO1.png" 
+              src="/Logo_LIGA_Design-2-removebg-preview.png" 
               alt="LIGA Design Logo" 
               width={140} 
               height={70} 

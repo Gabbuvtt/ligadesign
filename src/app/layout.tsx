@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "LIGA Design",
   description: "Mobiliaria a la Medida",
   icons: {
-    icon: "/Logo-Liga-Desing.png"
+    icon: "/Logo_LIGA_Desing2.png"
   }
 };
 
