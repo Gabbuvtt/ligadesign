@@ -74,7 +74,7 @@ export default function Home() {
 
       {/* 📱 MENÚ DESPLEGABLE PARA MÓVILES */}
       {isMenuOpen && (
-        <div className="md:hidden fixed top-[120px] left-0 w-full bg-white z-40 shadow-xl border-t border-slate-100 flex flex-col px-8 py-6 gap-6 text-lg font-medium tracking-wide">
+        <div className="md:hidden fixed top-[135px] left-0 w-full bg-white z-40 shadow-xl border-t border-slate-100 flex flex-col px-8 py-6 gap-6 text-lg font-medium tracking-wide">
           <a href="#inicio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Inicio</a>
           <a href="#servicios" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Servicios</a>
           <a href="#portfolio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Portafolio</a>
@@ -109,7 +109,7 @@ export default function Home() {
         
         <div 
           className="relative w-full bg-fixed bg-cover bg-center"
-          style={{ backgroundImage: "url('/bg-desing.jpg')" }}
+          style={{ backgroundImage: "url('/bg-desing2.jpeg')" }}
         >
           <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]"></div>
           
