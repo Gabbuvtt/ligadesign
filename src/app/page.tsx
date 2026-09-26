@@ -72,9 +72,9 @@ export default function Home() {
          </button>
       </header>
 
-      {/* 📱 MENÚ DESPLEGABLE PARA MÓVILES */}
+{/* 📱 MENÚ DESPLEGABLE PARA MÓVILES */}
       {isMenuOpen && (
-        <div className="md:hidden fixed top-[64px] left-0 w-full bg-white z-40 shadow-xl border-t border-slate-100 flex flex-col px-8 py-6 gap-6 text-lg font-medium tracking-wide">
+        <div className="md:hidden fixed top-[100px] left-0 w-full bg-white z-40 shadow-xl border-t border-slate-100 flex flex-col px-8 py-6 gap-6 text-lg font-medium tracking-wide">
           <a href="#inicio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Inicio</a>
           <a href="#servicios" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Servicios</a>
           <a href="#portfolio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Portafolio</a>
