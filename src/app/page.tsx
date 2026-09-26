@@ -108,7 +108,7 @@ export default function Home() {
       <main className="flex-1 md:ml-64 flex flex-col overflow-x-hidden bg-white">
         
         <div 
-          className="relative w-full bg-fixed bg-cover bg-center"
+          className="relative w-full bg-fixed bg-cover bg-center md:bg-fixed"
           style={{ backgroundImage: "url('/bg-desing2.jpeg')" }}
         >
           <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]"></div>
