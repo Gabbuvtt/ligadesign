@@ -104,14 +104,22 @@ export default function Home() {
          </nav>
       </aside>
 
-      {/* CONTENIDO PRINCIPAL (md:ml-64 asegura que el margen solo aplique en escritorio) */}
-      <main className="flex-1 md:ml-64 flex flex-col overflow-x-hidden bg-white">
+      {/* CONTENIDO PRINCIPAL */}
+      <main className="flex-1 md:ml-64 flex flex-col overflow-x-hidden">
         
-        <div 
-          className="relative w-full bg-fixed bg-cover bg-center md:bg-fixed"
-          style={{ backgroundImage: "url('/bg-desing2.jpeg')" }}
-        >
-          <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]"></div>
+        {/* 🖼️ FONDO FIJO A PRUEBA DE IPHONE (Efecto parallax real) */}
+        <div className="fixed top-0 left-0 w-full h-screen -z-10 pointer-events-none">
+          <img 
+            src="/bg-desing.jpg" 
+            alt="Fondo LIGA Design" 
+            className="w-full h-full object-cover"
+          />
+          {/* Capa blanca difuminada */}
+          <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]"></div>
+        </div>
+
+        {/* CONTENEDOR DE SECCIONES (Transparente para que se vea el fondo) */}
+        <div className="relative w-full"> 
           
           {/* 1. SECCIÓN INICIO */}
           <section id="inicio" className="relative z-10 min-h-screen w-full flex flex-col items-center justify-center pt-24 md:pt-0 px-6 md:px-8 text-center">
