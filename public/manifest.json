@@ -1,0 +1,18 @@
+{
+  "name": "LIGA Design",
+  "short_name": "LIGA Design",
+  "description": "Manufactura y Ensamblaje de Precisión. El aliado estratégico para arquitectos y desarrolladores.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/Logo_LIGA_Design-2-removebg-preview.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

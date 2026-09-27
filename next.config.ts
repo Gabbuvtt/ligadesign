@@ -1,7 +1,25 @@
 import type { NextConfig } from "next";
+// @ts-expect-error next-pwa does not have types
+import withPWAInit from "next-pwa";
+
+const withPWA = withPWAInit({
+  dest: "public",
+  disable: process.env.NODE_ENV === "development",
+  register: true,
+  skipWaiting: true,
+});
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {},
+  async redirects() {
+    return [
+      {
+        source: '/admin',
+        destination: '/admin/crm',
+        permanent: false,
+      },
+    ];
+  },
 };
 
-export default nextConfig;
+export default withPWA(nextConfig);

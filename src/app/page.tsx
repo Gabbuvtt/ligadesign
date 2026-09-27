@@ -2,11 +2,13 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { submitContactForm } from '@/modules/crm/application/actions';
 
 export default function Home() {
   // Estado para controlar si el menú de celular está abierto o cerrado
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const portfolioItems = [
     { id: 1, src: "/proyectos/portfolio4.jpeg", alt: "Cocina y espacios modernos" },
@@ -133,7 +135,7 @@ export default function Home() {
             </a>
           </section>
 
-          {/* 2. SECCIÓN SERVICIOS */}
+            {/* 2. SECCIÓN SERVICIOS */}
           <section id="servicios" className="w-full py-24 bg-white px-6 md:px-8">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl md:text-5xl font-serif text-slate-900 mb-16 text-center">
@@ -290,27 +292,70 @@ export default function Home() {
               </div>
 
               <div className="bg-slate-800/50 p-6 md:p-10 rounded-sm border border-slate-700/50 backdrop-blur-sm">
-                 <form className="flex flex-col gap-4 md:gap-6" onSubmit={(e) => e.preventDefault()}>
+                 <form 
+                   className="flex flex-col gap-4 md:gap-6" 
+                   onSubmit={async (e) => {
+                     e.preventDefault();
+                     if (isSubmitting) return;
+                     setIsSubmitting(true);
+                     
+                     try {
+                       const formElement = e.currentTarget;
+                       const formData = new FormData(formElement);
+                       
+                       const nombre = formData.get('nombre') as string;
+                       const apellido = formData.get('apellido') as string;
+                       const email = formData.get('email') as string;
+                       const telefono = formData.get('telefono') as string;
+                       const servicio = formData.get('servicio') as string;
+                       const mensaje = formData.get('mensaje') as string;
+                       
+                       const newFormData = new FormData();
+                       newFormData.append('nombre', `${nombre} ${apellido}`);
+                       newFormData.append('email', email);
+                       newFormData.append('telefono', telefono);
+                       newFormData.append('proyecto', `[Servicio: ${servicio}]\n\n${mensaje}`);
+                       
+                       const result = await submitContactForm(newFormData);
+                       if (result.success) {
+                         alert('Mensaje enviado con éxito. Te contactaremos pronto.');
+                         formElement.reset();
+                       } else {
+                         alert(`Error: ${result.error}`);
+                       }
+                     } catch (error) {
+                       console.error(error);
+                       alert('Hubo un error enviando el mensaje. Inténtalo de nuevo.');
+                     } finally {
+                       setIsSubmitting(false);
+                     }
+                   }}
+                 >
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                        <div className="flex flex-col gap-2">
                           <label htmlFor="nombre" className="text-xs md:text-sm text-slate-400 tracking-wide">Nombre</label>
-                          <input type="text" id="nombre" className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all" placeholder="Tu nombre" required />
+                          <input type="text" id="nombre" name="nombre" className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all" placeholder="Tu nombre" required disabled={isSubmitting} />
                        </div>
                        <div className="flex flex-col gap-2">
                           <label htmlFor="apellido" className="text-xs md:text-sm text-slate-400 tracking-wide">Apellido</label>
-                          <input type="text" id="apellido" className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all" placeholder="Tu apellido" required />
+                          <input type="text" id="apellido" name="apellido" className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all" placeholder="Tu apellido" required disabled={isSubmitting} />
                        </div>
                     </div>
 
                     <div className="flex flex-col gap-2">
                        <label htmlFor="email" className="text-xs md:text-sm text-slate-400 tracking-wide">Correo Electrónico</label>
-                       <input type="email" id="email" className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all" placeholder="ejemplo@correo.com" required />
+                       <input type="email" id="email" name="email" className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all" placeholder="ejemplo@correo.com" required disabled={isSubmitting} />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                       <label htmlFor="telefono" className="text-xs md:text-sm text-slate-400 tracking-wide">Número de WhatsApp (con código de país)</label>
+                       <input type="tel" id="telefono" name="telefono" className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all" placeholder="Ej: 584121234567" required disabled={isSubmitting} />
                     </div>
 
                     <div className="flex flex-col gap-2">
                        <label htmlFor="servicio" className="text-xs md:text-sm text-slate-400 tracking-wide">¿Qué buscas diseñar?</label>
-                       <select id="servicio" className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-slate-300 focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all appearance-none cursor-pointer">
+                       <select id="servicio" name="servicio" className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-slate-300 focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all appearance-none cursor-pointer" disabled={isSubmitting}>
                           <option value="cocina">Diseño de Cocina</option>
                           <option value="closet">Closet / Vestidor</option>
                           <option value="comercial">Mobiliario Comercial</option>
@@ -320,11 +365,11 @@ export default function Home() {
 
                     <div className="flex flex-col gap-2">
                        <label htmlFor="mensaje" className="text-xs md:text-sm text-slate-400 tracking-wide">Detalles del Proyecto</label>
-                       <textarea id="mensaje" rows={4} className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all resize-none" placeholder="Cuéntanos un poco sobre las medidas, materiales o estilo que tienes en mente..." required></textarea>
+                       <textarea id="mensaje" name="mensaje" rows={4} className="bg-slate-900 border border-slate-700 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-all resize-none" placeholder="Cuéntanos un poco sobre las medidas, materiales o estilo que tienes en mente..." required disabled={isSubmitting}></textarea>
                     </div>
 
-                    <button type="submit" className="mt-2 md:mt-4 w-full bg-white text-slate-900 font-medium py-3 md:py-4 rounded-sm hover:bg-slate-200 transition-colors tracking-wide uppercase text-xs md:text-sm">
-                       Enviar Mensaje
+                    <button type="submit" disabled={isSubmitting} className="mt-2 md:mt-4 w-full bg-white text-slate-900 font-medium py-3 md:py-4 rounded-sm hover:bg-slate-200 transition-colors tracking-wide uppercase text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                       {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
                     </button>
                     
                  </form>
