@@ -67,7 +67,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
 
           <div className="bg-slate-900/40 border border-slate-800/80 p-6 rounded-sm backdrop-blur-sm">
             <h3 className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-4">Acciones</h3>
-            <LeadActions leadId={lead.id} currentStatus={lead.status} leadName={lead.name} />
+            <LeadActions leadId={lead.id} currentStatus={lead.status} leadName={lead.name} phone={lead.phone} />
           </div>
         </div>
       </div>

@@ -84,3 +84,31 @@ export async function sendWhatsAppMessage(to: string, message: string) {
     return { success: false, error: "Error de red al conectar con Meta" };
   }
 }
+
+export async function forceCreateWhatsAppContact(phone: string, name: string) {
+  const formattedPhone = phone.replace(/[^0-9]/g, '');
+  const supabase = await createClient();
+  
+  let contactId = null;
+  const { data: existingContact } = await supabase
+    .from('whatsapp_contacts')
+    .select('id')
+    .eq('phone_number', formattedPhone)
+    .single();
+
+  if (existingContact) {
+    return { success: true, contactId: existingContact.id };
+  }
+
+  const { data: newContact, error } = await supabase
+    .from('whatsapp_contacts')
+    .insert({ phone_number: formattedPhone, name })
+    .select('id')
+    .single();
+    
+  if (error) {
+    return { success: false, error: error.message };
+  }
+  
+  return { success: true, contactId: newContact.id };
+}
