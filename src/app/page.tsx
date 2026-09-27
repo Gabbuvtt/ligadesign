@@ -320,7 +320,7 @@ export default function Home() {
                        if (result.success) {
                          const message = `Hola LIGA Design, acabo de dejar mis datos en la web.\nMi nombre es: ${nombre} ${apellido}\nMe interesa: Diseño de ${servicio}`;
                          const whatsappUrl = `https://wa.me/584241676126?text=${encodeURIComponent(message)}`;
-                         window.open(whatsappUrl, '_blank');
+                         window.location.href = whatsappUrl;
                          formElement.reset();
                        } else {
                          alert(`Error: ${result.error}`);
