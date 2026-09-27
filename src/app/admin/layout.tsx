@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -11,9 +12,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* 📱 HEADER PARA MÓVILES */}
       <header className="md:hidden fixed top-0 left-0 w-full bg-slate-900/90 backdrop-blur-md z-50 px-4 py-3 flex justify-between items-center border-b border-slate-800 shadow-sm">
          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-white flex items-center justify-center rounded-sm shadow-sm">
-               <span className="text-slate-950 font-serif font-bold text-xl leading-none">L</span>
-            </div>
+            <Image 
+              src="/Logo_LIGA_Design-2-removebg-preview.png" 
+              alt="LIGA Design Logo" 
+              width={100} 
+              height={50} 
+              className="w-auto h-8 object-contain" 
+              priority
+            />
          </div>
          <button 
            onClick={() => setIsSidebarOpen(!isSidebarOpen)} 
@@ -36,11 +42,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         md:translate-x-0 md:sticky md:shrink-0
       `}>
-         <div className="p-6 border-b border-slate-800/80 flex items-center justify-center md:justify-start gap-3 mt-14 md:mt-0">
-            <div className="w-8 h-8 bg-white flex items-center justify-center rounded-sm shadow-sm">
-               <span className="text-slate-950 font-serif font-bold text-xl leading-none">L</span>
-            </div>
-            <h1 className="text-sm font-semibold tracking-[0.2em] uppercase text-white">LIGA Design</h1>
+         <div className="p-6 border-b border-slate-800/80 flex items-center justify-center md:justify-start mt-14 md:mt-0">
+            <Image 
+              src="/Logo_LIGA_Design-2-removebg-preview.png" 
+              alt="LIGA Design Logo" 
+              width={160} 
+              height={80} 
+              className="w-full h-auto object-contain px-2" 
+              priority
+            />
          </div>
          
          <nav className="flex-1 px-4 py-8 flex flex-col gap-2">
@@ -95,7 +105,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
         
         <footer className="py-6 text-center border-t border-slate-800/80 mx-8">
-          <p className="text-[10px] text-slate-600 tracking-widest uppercase">LIGA DESIGN © {new Date().getFullYear()}</p>
+          <p className="text-[10px] text-slate-600 tracking-widest uppercase">LIGA DESIGN VE © {new Date().getFullYear()}</p>
         </footer>
       </main>
     </div>

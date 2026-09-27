@@ -1,8 +1,8 @@
 {
-  "name": "LIGA Design",
-  "short_name": "LIGA Design",
-  "description": "Manufactura y Ensamblaje de Precisión. El aliado estratégico para arquitectos y desarrolladores.",
-  "start_url": "/",
+  "name": "LIGA Admin",
+  "short_name": "LIGA Admin",
+  "description": "Panel de Administración de LIGA Design",
+  "start_url": "/admin",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0f172a",
