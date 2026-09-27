@@ -11,13 +11,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       
       {/* 📱 HEADER PARA MÓVILES */}
       <header className="md:hidden fixed top-0 left-0 w-full bg-slate-900/90 backdrop-blur-md z-50 px-4 py-3 flex justify-between items-center border-b border-slate-800 shadow-sm">
-         <div className="flex items-center gap-2">
+         <div className="flex items-center gap-2 bg-white rounded-sm px-2 py-1 shadow-sm">
             <Image 
               src="/Logo_LIGA_Design-2-removebg-preview.png" 
               alt="LIGA Design Logo" 
               width={100} 
               height={50} 
-              className="w-auto h-8 object-contain" 
+              className="w-auto h-7 object-contain" 
               priority
             />
          </div>
@@ -43,14 +43,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         md:translate-x-0 md:sticky md:shrink-0
       `}>
          <div className="p-6 border-b border-slate-800/80 flex items-center justify-center md:justify-start mt-14 md:mt-0">
-            <Image 
-              src="/Logo_LIGA_Design-2-removebg-preview.png" 
-              alt="LIGA Design Logo" 
-              width={160} 
-              height={80} 
-              className="w-full h-auto object-contain px-2" 
-              priority
-            />
+            <div className="bg-white rounded-sm p-4 w-full flex justify-center shadow-sm">
+               <Image 
+                 src="/Logo_LIGA_Design-2-removebg-preview.png" 
+                 alt="LIGA Design Logo" 
+                 width={160} 
+                 height={80} 
+                 className="w-full h-auto object-contain" 
+                 priority
+               />
+            </div>
          </div>
          
          <nav className="flex-1 px-4 py-8 flex flex-col gap-2">
