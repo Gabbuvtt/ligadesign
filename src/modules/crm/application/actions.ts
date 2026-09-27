@@ -3,7 +3,6 @@
 import { createClient } from "@/modules/shared/infrastructure/supabase/server";
 import { sendEmail } from "@/modules/notifications/infrastructure/resend";
 import { revalidatePath } from "next/cache";
-import { sendWhatsAppMessage } from "@/modules/whatsapp/application/actions";
 
 export async function submitContactForm(formData: FormData) {
   const name = formData.get("nombre") as string;
@@ -36,32 +35,31 @@ export async function submitContactForm(formData: FormData) {
       return { success: false, error: dbError.message || "Ocurrió un error en la base de datos." };
     }
 
-    // 2. Enviar notificación por WhatsApp si el usuario proporcionó teléfono
-    // Se ejecuta en background
-    if (phone) {
-      const whatsappMsg = `¡Hola ${name}! Hemos recibido correctamente tu solicitud de contacto sobre tu proyecto en LIGA Design. Nuestro equipo técnico evaluará la información y te contactaremos por aquí a la brevedad posible.\n\n*Tu solicitud:* ${projectNotes}\n\nGracias por confiar en nosotros.`;
-      sendWhatsAppMessage(phone, whatsappMsg).catch(console.error);
-    }
 
-    // 3. Enviar email de confirmación al cliente (Opcional, depende de Resend)
+
+    // 3. Enviar email de notificación al Administrador
     // Se ejecuta en background para no bloquear la respuesta
     sendEmail({
-      to: email,
-      subject: "LIGA DESIGN - Hemos recibido tu mensaje",
+      to: "liga.desing0708@gmail.com",
+      subject: "🔔 NUEVO LEAD - LIGA DESIGN",
       html: `
         <div style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #0f172a; padding: 32px 24px; text-align: center;">
-            <h1 style="color: #ffffff; margin: 0; font-size: 24px; letter-spacing: 4px;">LIGA DESIGN</h1>
+            <h1 style="color: #ffffff; margin: 0; font-size: 24px; letter-spacing: 4px;">LIGA DESIGN - NUEVO LEAD</h1>
           </div>
           <div style="padding: 32px 24px;">
-            <p>Hola <strong>${name}</strong>,</p>
-            <p>Hemos recibido correctamente tu solicitud de contacto sobre tu proyecto. Nuestro equipo técnico evaluará la información y te contactaremos a la brevedad posible para agendar una reunión o solicitar los planos detallados.</p>
-            <p>Tu mensaje:</p>
+            <p>Tienes un nuevo prospecto interesado en tus servicios:</p>
+            <ul>
+              <li><strong>Nombre:</strong> ${name}</li>
+              <li><strong>Email:</strong> ${email}</li>
+              <li><strong>Teléfono:</strong> ${phone}</li>
+            </ul>
+            <p><strong>Detalles del proyecto:</strong></p>
             <blockquote style="background-color: #f8fafc; border-left: 4px solid #334155; padding: 16px; font-style: italic; color: #475569;">
               "${projectNotes}"
             </blockquote>
             <br/>
-            <p>Gracias por confiar en el taller de LIGA Design.</p>
+            <a href="https://ligadesign.online/admin/crm" style="display: inline-block; background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold;">Ir al CRM</a>
           </div>
         </div>
       `,

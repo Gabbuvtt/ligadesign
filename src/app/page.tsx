@@ -318,7 +318,9 @@ export default function Home() {
                        
                        const result = await submitContactForm(newFormData);
                        if (result.success) {
-                         alert('Mensaje enviado con éxito. Te contactaremos pronto.');
+                         const message = `Hola LIGA Design, acabo de dejar mis datos en la web.\nMi nombre es: ${nombre} ${apellido}\nMe interesa: Diseño de ${servicio}`;
+                         const whatsappUrl = `https://wa.me/584241676126?text=${encodeURIComponent(message)}`;
+                         window.open(whatsappUrl, '_blank');
                          formElement.reset();
                        } else {
                          alert(`Error: ${result.error}`);

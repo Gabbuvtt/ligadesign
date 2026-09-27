@@ -13,7 +13,8 @@ export async function sendEmail({
 }) {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>', // Update this with verified domain later
+      from: 'LIGA Design <onboarding@resend.dev>', // Usando el sandbox por defecto
+
       to,
       subject,
       html,

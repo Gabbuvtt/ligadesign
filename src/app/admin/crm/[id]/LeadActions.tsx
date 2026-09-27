@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { updateLeadStatus, convertLeadToProject } from "@/modules/crm/application/actions";
-import { forceCreateWhatsAppContact } from "@/modules/whatsapp/application/actions";
 
 export default function LeadActions({ leadId, currentStatus, leadName, phone }: { leadId: string, currentStatus: string, leadName: string, phone?: string }) {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -37,30 +36,8 @@ export default function LeadActions({ leadId, currentStatus, leadName, phone }: 
     }
   };
 
-  const handleStartWhatsApp = async () => {
-    if (!phone || isUpdating) return;
-    setIsUpdating(true);
-    const result = await forceCreateWhatsAppContact(phone, leadName);
-    setIsUpdating(false);
-
-    if (result.success) {
-      window.location.href = "/admin/whatsapp";
-    } else {
-      alert("Error iniciando chat: " + result.error);
-    }
-  };
-
   return (
     <div className="space-y-4">
-      {phone && (
-        <button 
-          onClick={handleStartWhatsApp}
-          disabled={isUpdating} 
-          className="w-full bg-[#00a884] hover:bg-[#008f6f] text-white text-xs uppercase tracking-widest font-medium py-3 rounded-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-900/20"
-        >
-          Iniciar Chat WhatsApp
-        </button>
-      )}
       <button 
         onClick={handleConvertToProject}
         disabled={isUpdating || currentStatus === 'CERRADO'} 

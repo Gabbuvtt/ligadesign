@@ -56,10 +56,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
                Inventario
             </a>
-            <a href="/admin/whatsapp" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-widest text-emerald-500 hover:text-emerald-400 hover:bg-emerald-500/10 rounded-sm transition-all">
-               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path></svg>
-               WhatsApp CRM
-            </a>
          </nav>
 
          <div className="p-4 border-t border-slate-800/80">
