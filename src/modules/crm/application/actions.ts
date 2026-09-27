@@ -33,7 +33,7 @@ export async function submitContactForm(formData: FormData) {
 
     if (dbError) {
       console.error("Error guardando lead:", dbError);
-      return { success: false, error: "Ocurrió un error al guardar tus datos." };
+      return { success: false, error: dbError.message || "Ocurrió un error en la base de datos." };
     }
 
     // 2. Enviar notificación por WhatsApp si el usuario proporcionó teléfono
