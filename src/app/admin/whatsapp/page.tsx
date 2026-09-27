@@ -33,12 +33,23 @@ export default async function WhatsAppPage() {
   }
 
   // Format data
-  const formattedContacts = contacts?.map(c => ({
-    id: c.id,
-    phone_number: c.phone_number,
-    name: c.name || c.leads?.name || c.phone_number,
-    last_message_at: c.last_message_at
-  })) || [];
+  const formattedContacts = contacts?.map((c: any) => {
+    let leadName = null;
+    if (c.leads) {
+      if (Array.isArray(c.leads)) {
+        leadName = c.leads[0]?.name;
+      } else {
+        leadName = c.leads.name;
+      }
+    }
+    
+    return {
+      id: c.id,
+      phone_number: c.phone_number,
+      name: c.name || leadName || c.phone_number,
+      last_message_at: c.last_message_at
+    };
+  }) || [];
 
   return (
     <div className="flex h-[calc(100vh-64px)] w-full bg-slate-950 overflow-hidden">
