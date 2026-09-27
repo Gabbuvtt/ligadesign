@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/modules/shared/infrastructure/supabase/server";
+import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { sendEmail } from "@/modules/notifications/infrastructure/resend";
 import { revalidatePath } from "next/cache";
 
@@ -15,7 +16,10 @@ export async function submitContactForm(formData: FormData) {
   }
 
   try {
-    const supabase = await createClient();
+    // Si tenemos la llave de administrador, saltamos RLS por completo. Si no, intentamos con la llave pública.
+    const supabase = process.env.SUPABASE_SERVICE_ROLE_KEY 
+      ? createAdminClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY)
+      : await createClient();
 
     // 1. Guardar el Lead en la base de datos de Supabase
     const { data: lead, error: dbError } = await supabase
