@@ -7,44 +7,7 @@ import { submitContactForm } from '@/modules/crm/application/actions';
 export default function Home() {
   // Estado para controlar si el menú de celular está abierto o cerrado
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeCard, setActiveCard] = useState<number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const portfolioItems = [
-    { id: 1, src: "/proyectos/portfolio4.jpeg", alt: "Cocina y espacios modernos" },
-    { id: 2, src: "/proyectos/portfolio2.jpeg", alt: "Closet a medida" },
-    { id: 3, src: "/proyectos/portfolio6.jpeg", alt: "Detalle de acabados" },
-    { id: 4, src: "/proyectos/portfolio5.jpeg", alt: "Isla central" },
-    { id: 5, src: "/proyectos/portfolio7.jpeg", alt: "Mobiliario habitación" },
-    { id: 6, src: "/proyectos/portfolio1.jpeg", alt: "Diseño interior" },
-    { id: 7, src: "/proyectos/portfolio3.jpeg", alt: "Diseño interior" },
-  ];
-
-  const renderCard = (item: any) => {
-      const isActive = activeCard === item.id;
-      
-      return (
-        <div 
-          key={item.id} 
-          className="w-full rounded-sm overflow-hidden group relative cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300 transform-gpu"
-          onClick={() => setActiveCard(isActive ? null : item.id)}
-        >
-          <img 
-            src={item.src} 
-            alt={item.alt} 
-            className={`block w-full h-auto object-cover transition-transform duration-700 transform-gpu will-change-transform ${isActive ? 'scale-105' : 'group-hover:scale-105'}`}
-            loading="lazy"
-          />
-          <div className={`absolute inset-0 bg-slate-900/50 transition-opacity duration-300 flex items-center justify-center p-6 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-            <div className={`border border-white/60 w-full h-full flex items-center justify-center transition-transform duration-500 transform-gpu ${isActive ? 'scale-100' : 'scale-95 group-hover:scale-100'}`}>
-              <span className="text-white text-sm md:text-base font-serif tracking-widest uppercase text-center px-4 shadow-sm">
-                {item.alt}
-              </span>
-            </div>
-          </div>
-        </div>
-      );
-    };
 
   return (
     <div className="relative min-h-screen w-full font-sans text-slate-800">
@@ -79,7 +42,6 @@ export default function Home() {
         <div className="md:hidden fixed top-[135px] left-0 w-full bg-white z-40 shadow-xl border-t border-slate-100 flex flex-col px-8 py-6 gap-6 text-lg font-medium tracking-wide">
           <a href="#inicio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Inicio</a>
           <a href="#servicios" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Servicios</a>
-          <a href="#portfolio" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Portafolio</a>
           <a href="#sobre-nosotros" onClick={() => setIsMenuOpen(false)} className="border-b border-slate-100 pb-3 hover:text-slate-500 transition-colors">Sobre Nosotros</a>
           <a href="#contacto" onClick={() => setIsMenuOpen(false)} className="pb-3 hover:text-slate-500 transition-colors">Contacto</a>
         </div>
@@ -100,7 +62,6 @@ export default function Home() {
          <nav className="flex flex-col gap-6 text-sm tracking-wide">
             <a href="#inicio" className="hover:font-bold transition-all">Inicio</a>
             <a href="#servicios" className="hover:font-bold transition-all">Servicios</a>
-            <a href="#portfolio" className="hover:font-bold transition-all">Portafolio</a>
             <a href="#sobre-nosotros" className="hover:font-bold transition-all">Sobre Nosotros</a>
             <a href="#contacto" className="hover:font-bold transition-all">Contacto</a>
          </nav>
@@ -188,30 +149,7 @@ export default function Home() {
           </section>  
         </div>
 
-        {/* 3. PORTFOLIO */}
-        <section id="portfolio" className="min-h-screen w-full bg-white py-24 px-6 md:px-20 flex flex-col items-center">
-           <div className="flex flex-col items-center mb-12 md:mb-16 text-center">
-             <h2 className="text-3xl md:text-4xl font-serif uppercase tracking-widest text-slate-900 mb-4">Portafolio</h2>
-             <p className="text-slate-500 max-w-xl text-sm md:text-base">Una selección de nuestros proyectos más recientes. Diseño a medida y manufactura de precisión.</p>
-           </div>
-           
-           <div className="w-full max-w-6xl">
-              <div className="hidden lg:grid grid-cols-3 gap-6">
-                 <div className="flex flex-col gap-6">{portfolioItems.filter((_, i) => i % 3 === 0).map(renderCard)}</div>
-                 <div className="flex flex-col gap-6">{portfolioItems.filter((_, i) => i % 3 === 1).map(renderCard)}</div>
-                 <div className="flex flex-col gap-6">{portfolioItems.filter((_, i) => i % 3 === 2).map(renderCard)}</div>
-              </div>
-              <div className="hidden md:grid lg:hidden grid-cols-2 gap-6">
-                 <div className="flex flex-col gap-6">{portfolioItems.filter((_, i) => i % 2 === 0).map(renderCard)}</div>
-                 <div className="flex flex-col gap-6">{portfolioItems.filter((_, i) => i % 2 === 1).map(renderCard)}</div>
-              </div>
-              <div className="grid md:hidden grid-cols-1 gap-6">
-                 <div className="flex flex-col gap-6">{portfolioItems.map(renderCard)}</div>
-              </div>
-           </div>
-        </section>
-
-        {/* 4. SOBRE NOSOTROS */}
+        {/* 3. SOBRE NOSOTROS */}
         <section id="sobre-nosotros" className="min-h-screen w-full bg-slate-50 py-24 px-6 md:px-20 flex flex-col justify-center">
            <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
               
@@ -253,7 +191,7 @@ export default function Home() {
            </div>
         </section>
 
-        {/* 5. CONTACTO */}
+        {/* 4. CONTACTO */}
         <section id="contacto" className="min-h-screen w-full bg-slate-900 text-white py-24 px-6 md:px-20 flex flex-col justify-center">
            <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
               
